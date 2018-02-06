@@ -1,0 +1,29 @@
+<div class="card">
+  <img class="card-img-top" src="assets/images/product.jpg" alt="Card image cap">
+  <div class="card-body">
+    <div class="info">
+        <div class="float-left">case</div>
+        <div class="float-right">$100</div>
+    </div><br>
+    <div class="info">
+      <div class="float-left">
+          <ng-template #t let-fill="fill">
+              <span *ngIf="fill === 100" class="star full">&hearts;</span>
+              <span *ngIf="fill === 0" class="star">&hearts;</span>
+              <span *ngIf="fill < 100 && fill > 0" class="star">
+                <span class="half" [style.width.%]="fill">&hearts;</span>&hearts;
+              </span>
+            </ng-template>
+            <ngb-rating 
+              [(rate)]="currentRate" 
+              [starTemplate]="t"
+              [readonly]="readonly" 
+              (hover)="hovered=$event" 
+              (leave)="hovered=currentRate" 
+              (click)="block()"
+              max="5"
+            ></ngb-rating>
+      </div>
+    </div>
+  </div>
+</div>
